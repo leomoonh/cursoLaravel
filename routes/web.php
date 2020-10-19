@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','UserController@index');
+Route::post('users','UserController@store')-> name('users.store');
+Route::delete('users/{user}','UserController@destroy')-> name('users.destroy'); 
+
+/*Route::get('/', [UserController::class, 'index']);
+Route::post('users', [UserController::class, 'store']);
+Route::delete('users/{user}', [UserController::class, 'destroy']);
+*/
